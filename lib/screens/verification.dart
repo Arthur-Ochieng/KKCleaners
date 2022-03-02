@@ -1,3 +1,4 @@
+import 'package:cleaner/screens/registration.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/bubble_layer.dart';
 import 'package:cleaner/widgets/constants.dart';
@@ -81,7 +82,7 @@ class _VerificationPageState extends State<VerificationPage> {
                               if (value!.isEmpty){
                                 return "Required";
                               }
-                              if (value.length < 10){
+                              if (value.length < 6){
                                 return "Invalid OTP";
                               }
                               return null;
@@ -119,15 +120,20 @@ class _VerificationPageState extends State<VerificationPage> {
                             ),
                           ),
                         ),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(top: 20),
-                          child: Text(
-                            "Resend OTP?",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Colors.red,
-                              decoration: TextDecoration.underline,
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => RegistrationPage()));
+                            },
+                            child: Text(
+                              "Resend OTP?",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: Colors.red,
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
                           ),
                         ),

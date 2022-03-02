@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton(
                       onPressed: (){
                         if (_formKey.currentState!.validate()){
-                          print("Mobile number is ${_mobileController.text}");
+                          //print("Mobile number is ${_mobileController.text}");
                         }
                       },
                       child: const Center(
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = (){
                               //handles click of the request
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => VerificationPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => const VerificationPage()));
                             },
                           style: const TextStyle(
                             color: Colors.red,

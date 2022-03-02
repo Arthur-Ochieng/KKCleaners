@@ -1,3 +1,4 @@
+import 'package:cleaner/screens/fragments/profile.dart';
 import 'package:cleaner/screens/login_page.dart';
 import 'package:cleaner/screens/splash.dart';
 import 'package:cleaner/screens/verification.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }

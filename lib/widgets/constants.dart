@@ -6,4 +6,4 @@ final List<Color> gradientColors = [
   Color(0xffD782D9),
 ];
 Color bubbleColor =const Color(0x26FFFFFF);
-Color buttonColor = const Color(0xff5E72E4);
+Color buttonColor = Color.fromARGB(255, 96, 114, 212);
