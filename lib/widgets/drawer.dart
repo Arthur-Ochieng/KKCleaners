@@ -59,7 +59,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  "/images/KK.png",
+                  "assets/images/KK.png",
                   height: 70,
                   width: 70,
                   fit: BoxFit.cover,

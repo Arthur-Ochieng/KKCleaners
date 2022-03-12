@@ -16,9 +16,9 @@ class _WelcomePageState extends State<WelcomePage> {
 
   final PageController _pageController = PageController(initialPage: 0, keepPage: true);
   List images = [
-    "/images/splash1.jpg",
-    "/images/splash4.jpg",
-    "/images/splash5.jpg",
+    "assets/images/splash1.jpg",
+    "assets/images/splash4.jpg",
+    "assets/images/splash5.jpg",
   ];
 
   //filler text

@@ -6,12 +6,12 @@ AppBar buildAppBar (BuildContext context){
   const icon = CupertinoIcons.moon_stars;
 
   return AppBar(
-    leading: BackButton(),
+    leading: const BackButton(),
     // backgroundColor: Colors.transparent,
     elevation: 0,
     actions: [
       IconButton(
-        icon: Icon(icon),
+        icon: const Icon(icon),
         onPressed: (){},
       ),
     ],
