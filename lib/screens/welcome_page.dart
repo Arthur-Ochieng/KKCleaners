@@ -23,17 +23,16 @@ class _WelcomePageState extends State<WelcomePage> {
 
   //filler text
   List<String> textHeader = [
-    "lorem ipsum",
-    "lorem ipsum",
-    "lorem ipsum",
+    "Deliver Cleaning Services",
+    "At Convenient Prices",
+    "In a Click!",
   ];
   List<String> textSubHeader = [
-    "lorem ipsum",
-    "lorem ipsum",
-    "lorem ipsum",
+    "At any time of the day",
+    "Without hefty commissions",
+    "With reliable clients",
   ];
   
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -163,7 +163,7 @@ class _ProfileState extends State<Profile> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(60),
               child: Image.asset(
-                "/images/KK.png",
+                "assets/images/KK.png",
                 height: 120,
                 width: 120,
                 fit: BoxFit.cover,

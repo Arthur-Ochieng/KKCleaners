@@ -26,17 +26,17 @@ class _BookingPageState extends State<BookingPage> {
       zoom: 19.151926040649414);
 
   List<String> bottomMenus = [
-    "Mini",
-    "Sedan",
-    "Prime",
-    "Truck",
+    "Laundry",
+    "Carpet",
+    "Dusting",
+    "All",
   ];
 
   List<IconData> bottomMenusIcons = [
-    Icons.car_rental,
-    Icons.local_taxi,
-    Icons.car_repair,
-    Icons.local_shipping,
+    Icons.dry_cleaning,
+    Icons.house,
+    Icons.wash,
+    Icons.cleaning_services,
   ];
 
   int selectedIndex = 0;
@@ -79,27 +79,27 @@ class _BookingPageState extends State<BookingPage> {
                           Icons.my_location,
                           color: Colors.black87,
                         ),
-                        hintText: "Enter your pickup location",
+                        hintText: "Pick Location of Service",
                       ),
                     ),
                   ),
-                  const Divider(
-                    thickness: 0.5,
-                    color: Colors.black87,
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.only(left: 8),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                      ),
-                      prefixIcon: Icon(
-                        Icons.near_me,
-                        color: Colors.black87,
-                      ),
-                      hintText: "Enter drop-off location",
-                    ),
-                  ),
+                  // const Divider(
+                  //   thickness: 0.5,
+                  //   color: Colors.black87,
+                  // ),
+                  // TextFormField(
+                  //   decoration: const InputDecoration(
+                  //     contentPadding: EdgeInsets.only(left: 8),
+                  //     border: OutlineInputBorder(
+                  //       borderSide: BorderSide.none,
+                  //     ),
+                  //     prefixIcon: Icon(
+                  //       Icons.near_me,
+                  //       color: Colors.black87,
+                  //     ),
+                  //     hintText: "Enter drop-off location",
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -177,7 +177,7 @@ class _BookingPageState extends State<BookingPage> {
                       primary: const Color(0xff3C2593),
                     ),
                     child: const Center(
-                      child: Text("Ride Now"),
+                      child: Text("Confirm Location"),
                     )),
               ],
             ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cleaner/screens/complete.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -79,7 +80,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
               right: 20,
               child: Card(
                 elevation: 8,
-                shape: RoundedRectangleBorder(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -94,31 +95,31 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                             borderSide: BorderSide.none,
                           ),
                           prefixIcon: Icon(
-                            Icons.my_location,
+                            Icons.near_me,
                             color: Colors.black87,
                           ),
                           hintText: "Embakasi, Donholm",
                         ),
                       ),
                     ),
-                    const Divider(
-                      thickness: 0.5,
-                      color: Colors.black87,
-                    ),
-                    TextFormField(
-                      readOnly: true,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 8),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.near_me,
-                          color: Colors.black87,
-                        ),
-                        hintText: "Nairobi, Kenya",
-                      ),
-                    ),
+                    // const Divider(
+                    //   thickness: 0.5,
+                    //   color: Colors.black87,
+                    // ),
+                    // TextFormField(
+                    //   readOnly: true,
+                    //   decoration: const InputDecoration(
+                    //     contentPadding: EdgeInsets.only(left: 8),
+                    //     border: OutlineInputBorder(
+                    //       borderSide: BorderSide.none,
+                    //     ),
+                    //     prefixIcon: Icon(
+                    //       Icons.near_me,
+                    //       color: Colors.black87,
+                    //     ),
+                    //     hintText: "Nairobi, Kenya",
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -127,6 +128,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
               left: 20,
               right: 20,
               bottom: 50,
+              height: 100,
               child: Card(
                 child: Row(
                   children: [
@@ -139,11 +141,11 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                               child: Row(
                                 children: const[
                                   Icon(
-                                    Icons.local_taxi,
+                                    Icons.dry_cleaning,
                                     color: Color(0xff3C2593),
                                   ),
                                   SizedBox(width: 8.0),
-                                  Text("Mini Ride")
+                                  Text("Laundry")
                                 ],
                               ),
                             ),
@@ -155,19 +157,19 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                           //   ),
                           //   title: Text("Mini Ride"),
                           // ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(
                               left: 16,
                               bottom: 10,
                             ),
-                            child: Text("4 people allowed"),
+                            // child: Text("4 people allowed"),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(
                               left: 16,
                               bottom: 10,
                             ),
-                            child: Text("Fare"),
+                            child: Text("Estimate"),
                           ),
                         ])),
                     Padding(
@@ -184,8 +186,8 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                           child: const Text("View Bill"),
                         ),
                         const Padding(
-                            padding: EdgeInsets.only(top: 16.0),
-                            child: Text("\u20B9 251.55")),
+                            padding: EdgeInsets.only(top: 20.0),
+                            child: Text("KSHS.251.55")),
                       ]),
                     )
                   ],
@@ -223,28 +225,33 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
-                        child: Container(
-                          height: 30,
-                          child: Row(
-                            children: const [
-                              Icon(Icons.arrow_forward),
-                              SizedBox(width: 5),
-                              Text("Ride Now"),
-                            ],
-                          ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CompletePage()
+                            )
+                          );
+                        },
+                        child: Row(
+                          children: const [
+                            Icon(Icons.arrow_forward),
+                            SizedBox(width: 10),
+                            Text("Schedule"),
+                          ],
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: const Color(0xff3C2593),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
                     ],
                   ),
-                )),
+                ),
+              ),
           ],
         ),
       ),

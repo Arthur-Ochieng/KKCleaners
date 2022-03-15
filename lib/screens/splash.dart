@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState(){
     Timer(const Duration(milliseconds: 2500),() {
       //push replacement used to delete the splash page from the stack
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => WelcomePage()));
     });
     super.initState();
   }
@@ -45,7 +45,7 @@ class _SplashPageState extends State<SplashPage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(75),
               child: Image.asset(
-                "/images/KK.png",
+                "assets/images/KK.png",
                 height: 150,
                 width: 150,
               ),
