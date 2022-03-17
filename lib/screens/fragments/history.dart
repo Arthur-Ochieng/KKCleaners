@@ -14,12 +14,12 @@ class _HistoryPageState extends State<HistoryPage> {
         cleanerId: "567",
         source: "Carpet-Cleaning",
         destination: "Embakasi",
-        time: "Today 1630hrs"),
+        time: "Friday 1630hrs"),
     HistoryModel(
         cleanerId: "145",
         source: "Laundry-Cleaning",
         destination: "Langata",
-        time: "Tomorrow 1145hrs"),
+        time: "Monday 1145hrs"),
   ];
   @override
   Widget build(BuildContext context) {

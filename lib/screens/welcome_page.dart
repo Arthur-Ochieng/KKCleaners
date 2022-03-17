@@ -107,7 +107,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       curve: Curves.easeIn,
                     );
                   }else{
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPage()));
                   }
                 },
               ),
