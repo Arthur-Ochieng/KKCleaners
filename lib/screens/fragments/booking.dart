@@ -14,16 +14,17 @@ class BookingPage extends StatefulWidget {
 class _BookingPageState extends State<BookingPage> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+  static final CameraPosition center = const CameraPosition(
+    target: LatLng(-1.286389, 36.817223),
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  // static final CameraPosition _kLake = const CameraPosition(
+  //     bearing: 192.8334901395799,
+  //     target: LatLng(37.43296265331129, -122.08832357078792),
+  //     tilt: 59.440717697143555,
+  //     zoom: 19.151926040649414
+  //     );
 
   List<String> bottomMenus = [
     "Laundry",
@@ -50,7 +51,7 @@ class _BookingPageState extends State<BookingPage> {
         children: [
           GoogleMap(
             mapType: MapType.normal,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: center,
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             },
@@ -82,24 +83,7 @@ class _BookingPageState extends State<BookingPage> {
                         hintText: "Pick Location of Service",
                       ),
                     ),
-                  ),
-                  // const Divider(
-                  //   thickness: 0.5,
-                  //   color: Colors.black87,
-                  // ),
-                  // TextFormField(
-                  //   decoration: const InputDecoration(
-                  //     contentPadding: EdgeInsets.only(left: 8),
-                  //     border: OutlineInputBorder(
-                  //       borderSide: BorderSide.none,
-                  //     ),
-                  //     prefixIcon: Icon(
-                  //       Icons.near_me,
-                  //       color: Colors.black87,
-                  //     ),
-                  //     hintText: "Enter drop-off location",
-                  //   ),
-                  // ),
+                  )
                 ],
               ),
             ),
@@ -169,7 +153,7 @@ class _BookingPageState extends State<BookingPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => ConfirmationPage()
+                          builder: (_) => const ConfirmationPage()
                         )
                       );
                     },
