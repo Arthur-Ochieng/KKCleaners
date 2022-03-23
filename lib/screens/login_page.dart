@@ -1,4 +1,5 @@
 import 'package:cleaner/screens/fragments/booking.dart';
+import 'package:cleaner/screens/home_page.dart';
 import 'package:cleaner/screens/registration.dart';
 import 'package:cleaner/screens/verification.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
@@ -202,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
       Fluttertoast.showToast(msg: "Login was successful");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => const BookingPage()),
+        MaterialPageRoute(builder: (_) => const HomePage()),
       );
     });
   }

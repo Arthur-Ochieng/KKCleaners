@@ -1,5 +1,8 @@
 import 'package:cleaner/screens/fragments/details.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+
 const cleanerData = [
   {
     'cleanerName': 'Cameron Jones',
@@ -25,7 +28,7 @@ const cleanerData = [
     'imgUrl': 'assets/images/KK.png',
     'bgColor': Color(0xffFFF0EB),
   },
-    {
+  {
     'cleanerName': 'Beth Watson',
     'company': 'Neville Clean Washers',
     'rating': '4.9',
@@ -33,7 +36,7 @@ const cleanerData = [
     'imgUrl': 'assets/images/KK.png',
     'bgColor': Color(0xffFFF0EB),
   },
-    {
+  {
     'cleanerName': 'Beth Watson',
     'company': 'Neville Clean Washers',
     'rating': '4.9',
@@ -41,7 +44,7 @@ const cleanerData = [
     'imgUrl': 'assets/images/KK.png',
     'bgColor': Color(0xffFFF0EB),
   },
-    {
+  {
     'cleanerName': 'Beth Watson',
     'company': 'Neville Clean Washers',
     'rating': '4.9',
@@ -49,7 +52,7 @@ const cleanerData = [
     'imgUrl': 'assets/images/KK.png',
     'bgColor': Color(0xffFFF0EB),
   },
-    {
+  {
     'cleanerName': 'Beth Watson',
     'company': 'Neville Clean Washers',
     'rating': '4.9',
@@ -60,15 +63,34 @@ const cleanerData = [
 ];
 
 class AddressPage extends StatefulWidget {
-  const AddressPage({ Key? key }) : super(key: key);
+  const AddressPage({Key? key}) : super(key: key);
 
   @override
   _AddressPageState createState() => _AddressPageState();
 }
 
 class _AddressPageState extends State<AddressPage> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
+    CollectionReference bookings =
+        FirebaseFirestore.instance.collection('booking');
+
+    List<dynamic> loadedBookings;
+
+    Future<void> getData() async {
+      QuerySnapshot querySnapshot = await bookings.get();
+
+      final allData = querySnapshot.docs.map((e) => e.data()).toList();
+      print(allData);
+      setState(() {
+        loadedBookings:
+        allData;
+      });
+    }
+
+    getData();
+
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: SingleChildScrollView(
@@ -76,8 +98,7 @@ class _AddressPageState extends State<AddressPage> {
           child: Column(
             children: <Widget>[
               const Padding(
-                padding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 // child: Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 //   children: <Widget>[
@@ -202,15 +223,17 @@ class CleanerCard extends StatelessWidget {
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailsPage(cleaner)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailsPage(cleaner)));
                 },
                 color: const Color(0xff4E295B),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
-                  'View Profile',
+                  'View Job',
                   style: TextStyle(
                     color: Colors.white,
                   ),

@@ -1,6 +1,7 @@
 import 'package:cleaner/screens/fragments/address.dart';
 import 'package:cleaner/screens/fragments/booking.dart';
 import 'package:cleaner/screens/fragments/history.dart';
+import 'package:cleaner/screens/fragments/marker.dart';
 import 'package:cleaner/screens/fragments/profile.dart';
 import 'package:cleaner/screens/fragments/wallet.dart';
 import 'package:cleaner/widgets/drawer.dart';
@@ -18,11 +19,11 @@ class _HomePageState extends State<HomePage> {
   //page selected
   int indexPage = 0;
   final List fragments = const [
-    BookingPage(),
+    AddressPage(),
     HistoryPage(),
     Profile(),
-    AddressPage(),
-    WalletPage(),
+    BookingPage(),
+    MarkerPage(),
   ];
 
   bool _dropdownShown = false;

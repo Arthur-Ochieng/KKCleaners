@@ -3,6 +3,7 @@ import 'package:cleaner/screens/fragments/bookings.dart';
 import 'package:cleaner/screens/fragments/marker.dart';
 import 'package:cleaner/screens/home_page.dart';
 import 'package:cleaner/screens/registration.dart';
+import 'package:cleaner/screens/splash.dart';
 import 'package:cleaner/screens/verification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cleaner/screens/login_page.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  const HomePage(),
+      home:  const LoginPage(),
     );
   }
 }

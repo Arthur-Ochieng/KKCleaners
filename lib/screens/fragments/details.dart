@@ -67,10 +67,12 @@ class DetailsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         const SizedBox(
-                          height: 80,
+                          height: 100,
                         ),
                         const Text(
-                          "Job Description",
+                          "Job Description"
+                          
+                          "\nClient's Instructions",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -79,10 +81,10 @@ class DetailsPage extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        ServiceTile(serviceList[0]),
-                        ServiceTile(serviceList[1]),
-                        ServiceTile(serviceList[2]),
-                        ServiceTile(serviceList[3]),
+                        // ServiceTile(serviceList[0]),
+                        // ServiceTile(serviceList[1]),
+                        // ServiceTile(serviceList[2]),
+                        // ServiceTile(serviceList[3]),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Container(
@@ -260,64 +262,64 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-class ServiceTile extends StatelessWidget {
-  // const ServiceTile({Key? key}) : super(key: key);
-  final service;
-  ServiceTile(this.service);
+// class ServiceTile extends StatelessWidget {
+//   // const ServiceTile({Key? key}) : super(key: key);
+//   final service;
+//   ServiceTile(this.service);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2 - 40,
-                child: Text(
-                  service['title'],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                '${service['duration']} Min',
-                style: const TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-          Text(
-            '\$${service['price']}',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-          MaterialButton(
-            onPressed: () {},
-            color: const Color(0xffFF8573),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Text(
-              'Book',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: const EdgeInsets.only(bottom: 30),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: <Widget>[
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: <Widget>[
+//               SizedBox(
+//                 width: MediaQuery.of(context).size.width / 2 - 40,
+//                 child: Text(
+//                   service['title'],
+//                   style: const TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 18,
+//                   ),
+//                 ),
+//               ),
+//               const SizedBox(
+//                 height: 5,
+//               ),
+//               Text(
+//                 '${service['duration']} Min',
+//                 style: const TextStyle(
+//                   color: Colors.grey,
+//                 ),
+//               ),
+//             ],
+//           ),
+//           Text(
+//             '\$${service['price']}',
+//             style: const TextStyle(
+//               fontWeight: FontWeight.bold,
+//               fontSize: 18,
+//             ),
+//           ),
+//           MaterialButton(
+//             onPressed: () {},
+//             color: const Color(0xffFF8573),
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(20),
+//             ),
+//             child: const Text(
+//               'Confirm',
+//               style: TextStyle(
+//                 color: Colors.white,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
