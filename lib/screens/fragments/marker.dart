@@ -32,7 +32,7 @@ class _MarkerState extends State<MarkerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: GoogleMap(
-      mapType: MapType.hybrid,
+      mapType: MapType.normal,
       initialCameraPosition: kGooglePlex,
       onMapCreated: onMapCreated,
       markers: Set<Marker>.of(markers.values),

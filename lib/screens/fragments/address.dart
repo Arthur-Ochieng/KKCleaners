@@ -82,7 +82,7 @@ class _AddressPageState extends State<AddressPage> {
       QuerySnapshot querySnapshot = await bookings.get();
 
       final allData = querySnapshot.docs.map((e) => e.data()).toList();
-      print(allData);
+      //print(allData);
       setState(() {
         loadedBookings:
         allData;
