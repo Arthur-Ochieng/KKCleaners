@@ -1,7 +1,9 @@
+import 'package:cleaner/screens/home_page.dart';
 import 'package:cleaner/screens/login_page.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/app_text_normal.dart';
 import 'package:cleaner/widgets/blinking_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -12,6 +14,8 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User? get currentUser => _firebaseAuth.currentUser;
   int pageValue = 0;
 
   final PageController _pageController = PageController(initialPage: 0, keepPage: true);
@@ -107,7 +111,11 @@ class _WelcomePageState extends State<WelcomePage> {
                       curve: Curves.easeIn,
                     );
                   }else{
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                    if (currentUser == null) {
+                       Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                    }else{
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const HomePage()));
+                    }                   
                   }
                 },
               ),

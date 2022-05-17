@@ -1,4 +1,7 @@
 import 'package:cleaner/screens/fragments/booking.dart';
+import 'package:cleaner/screens/fragments/bookings.dart';
+import 'package:cleaner/screens/fragments/jobs.dart';
+import 'package:cleaner/screens/fragments/offers.dart';
 import 'package:cleaner/screens/home_page.dart';
 import 'package:cleaner/screens/registration.dart';
 import 'package:cleaner/screens/verification.dart';
@@ -19,10 +22,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _mobileController = TextEditingController();
-  final TextEditingController _codeController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  //form key
+  final _formkey = GlobalKey<FormState>();
 
   String verificationIDReceived = "";
   bool otpCodeVisible = false;
@@ -51,76 +57,79 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: BoxDecoration(
                     color: bubbleColor,
                   ),
-                  child: TextFormField(
-                    controller: _mobileController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Required";
-                      }
-                      if (value.length < 10) {
-                        return "Invalid Mobile Number";
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.phone,
-                    maxLength: 15,
-                    decoration: InputDecoration(
-                      disabledBorder: InputBorder.none,
-                      border:
-                          const OutlineInputBorder(borderSide: BorderSide.none),
-                      fillColor: bubbleColor,
-                      contentPadding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      hintText: "Mobile Number",
-                      hintStyle: const TextStyle(color: Colors.black54),
-                      prefixIcon: const Icon(
-                        Icons.phone_iphone,
-                        color: Colors.black,
-                      ),
-                      counterText: "",
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible: otpCodeVisible,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 25),
-                    decoration: BoxDecoration(
-                      color: bubbleColor,
-                    ),
-                    child: TextFormField(
-                      controller: _codeController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Required";
-                        }
-                        if (value.length < 5) {
-                          return "Invalid OTP";
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.phone,
-                      maxLength: 6,
-                      decoration: InputDecoration(
-                        disabledBorder: InputBorder.none,
-                        border: const OutlineInputBorder(
-                            borderSide: BorderSide.none),
-                        fillColor: bubbleColor,
-                        contentPadding: const EdgeInsets.only(
-                          left: 10,
+
+                  //email Field
+                  child:Column(
+                    children:[
+                      Container(
+                        child: TextFormField(
+                          autofocus: false,
+                          controller: _emailController,
+                          //validator
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return ("Please Enter Your Email");
+                            }
+                            //reg expression for email validation
+                            if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+                              return ("Please Enter a valid email");
+                            }
+                            return null;
+                          },
+                          onSaved: (value) {
+                            _emailController.text = value!;
+                          },
+                          keyboardType: TextInputType.emailAddress,
+                          maxLength: 70,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.mail),
+                            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            hintText: "Email",
+                            // border: OutlineInputBorder(
+                            //   borderRadius: BorderRadius.circular(10),
+                            // ),
+                          ),
+                          // 
                         ),
-                        hintText: "OTP Number",
-                        hintStyle: const TextStyle(color: Colors.black54),
-                        prefixIcon: const Icon(
-                          Icons.message,
-                          color: Colors.black,
-                        ),
-                        counterText: "",
                       ),
-                    ),
+
+                     // const SizedBox(height: 10),
+                      Container(
+                        child: TextFormField(
+                          autofocus: false,
+                          controller: _passController,
+                          obscureText: true,
+
+                          //validator
+                          validator: (value) {
+                            RegExp regex = RegExp(r'^.{6,}$');
+                            if (value!.isEmpty) {
+                              return ("Password is required for login");
+                            }
+                            if (!regex.hasMatch(value)) {
+                              return ("Enter Valid Password(Min. 6 Characters)");
+                            }
+                          },
+                          onSaved: (value) {
+                            _passController.text = value!;
+                          },
+                          textInputAction: TextInputAction.done,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.vpn_key),
+                            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            hintText: "Password",
+                            // border: OutlineInputBorder(
+                            //   borderRadius: BorderRadius.circular(10),
+                            // ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
+                  
                 ),
+     
                 //button
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
@@ -129,27 +138,32 @@ class _LoginPageState extends State<LoginPage> {
                     color: buttonColor,
                     child: ElevatedButton(
                       onPressed: () {
-                        if (otpCodeVisible) {
-                          verifyCode();
-                        } else {
-                          verifyNumber();
-                        }
+                        signIn(_emailController.text, _passController.text);
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (_) => const ConfirmTruce()),
+                        );
                       },
-                      child: Center(
-                        child: Text(otpCodeVisible ? "Login" : "Verify"),
+                      child: const Center(
+                        child: Text(
+                          "Login",
+                          textAlign: TextAlign.center,
+                        )
                       ),
                     ),
                   ),
                 ),
+
+
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: RichText(
                     text: TextSpan(
-                      text: "By loggin in you will agree to",
+                      text: "New to KKCleaners?",
                       style: const TextStyle(fontSize: 14),
                       children: [
                         TextSpan(
-                          text: " Terms & Conditions",
+                          text: " SignUp",
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               //handles click of the request
@@ -176,35 +190,18 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void verifyNumber() {
-    auth.verifyPhoneNumber(
-        phoneNumber: _mobileController.text,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          await auth.signInWithCredential(credential).then((value) {
-            print("You are signed in successfully");
-          });
-        },
-        verificationFailed: (FirebaseAuthException exception) {
-          print(exception.message);
-        },
-        codeSent: (String verificationID, int? resendToken) {
-          verificationIDReceived = verificationID;
-          otpCodeVisible = true;
-          setState(() {});
-        },
-        codeAutoRetrievalTimeout: (String verificationID) {});
-  }
-
-  void verifyCode() async {
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationIDReceived, smsCode: _codeController.text);
-
-    await auth.signInWithCredential(credential).then((value) {
-      Fluttertoast.showToast(msg: "Login was successful");
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const HomePage()),
-      );
-    });
+  void signIn(String email, String password) async {
+    if (_formkey.currentState!.validate()) {
+      await auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+              Fluttertoast.showToast(msg: "Login was successful"),
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage())),
+            })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }

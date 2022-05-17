@@ -47,7 +47,7 @@ class _BookingsState extends State<Bookings> {
                     "address_lng": -31.43443,
                     "date": new DateTime.now(),
                   };
-                  
+
                   addBooking(new_booking);
                 } else {
                   Navigator.push(
@@ -75,14 +75,24 @@ class _BookingsState extends State<Bookings> {
                   user?.updateDisplayName("Arthur Ochieng");
                   // user?.updatePhotoURL("link to image");
                   // user?.updateEmail("new_email@example.com")
-                  
+
                   print(user);
                 } else {
                   print("Not signed in");
                 }
               },
-            )
-          ],
+            ),
+          //   GestureDetector(
+          //     child: Text("Get Details"),
+          //     onTap: () {
+          //       getCurrentUser() async {
+          //         final FirebaseUser user = await auth.currentUser();
+          //         final uid = user.uid;
+          //         print(uid);
+          //       }
+          //     },
+          //   )
+           ],
         ),
       ),
     );
