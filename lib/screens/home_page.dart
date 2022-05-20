@@ -1,12 +1,13 @@
-import 'package:cleaner/screens/fragments/address.dart';
-import 'package:cleaner/screens/fragments/booking.dart';
-import 'package:cleaner/screens/fragments/history.dart';
-import 'package:cleaner/screens/fragments/marker.dart';
-import 'package:cleaner/screens/fragments/profile.dart';
-import 'package:cleaner/screens/fragments/wallet.dart';
+import 'package:cleaner/screens/dump/booking.dart';
+import 'package:cleaner/screens/pages/accepted.dart';
+import 'package:cleaner/screens/pages/declined.dart';
+import 'package:cleaner/screens/pages/history.dart';
+import 'package:cleaner/screens/requests/marker.dart';
+import 'package:cleaner/screens/requests/offers.dart';
+import 'package:cleaner/screens/profile/profile.dart';
 import 'package:cleaner/widgets/drawer.dart';
 import 'package:flutter/material.dart';
-//import 'package:overlay_container/overlay_container.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,11 +20,11 @@ class _HomePageState extends State<HomePage> {
   //page selected
   int indexPage = 0;
   final List fragments = const [
-    AddressPage(),
+    ConfirmTruce(),
     HistoryPage(),
+    AcceptedPage(),
+    DeclinedPage(),
     Profile(),
-    BookingPage(),
-    MarkerPage(),
   ];
 
   bool _dropdownShown = false;
@@ -73,40 +74,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-//       body: Stack(
-//         children: [
-//           fragments[indexPage],
-//           OverlayContainer(
-//             show: _dropdownShown,
-//             child: Container(
-//               height: MediaQuery.of(context).size.height - 100,
-//               width: MediaQuery.of(context).size.width -32,
-//               margin: const EdgeInsets.all(16),
-//               padding: const EdgeInsets.all(16),
-//               decoration: BoxDecoration(
-//                 color: Colors.white,
-//                 boxShadow: <BoxShadow>[
-//                   BoxShadow(
-//                     color: Colors.grey.withOpacity(0.3),
-//                     blurRadius: 3,
-//                     spreadRadius: 6,
-//                   ),
-//                 ],
-//               ),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Text(
-//                     "Notification",
-//                     style: TextStyle(fontSize: 30),
-//                   )
-//                 ],
-//               ),
-//             ),
-//           )
-//         ]
-//       )
-     
-//     );
-//   }
-// }
+

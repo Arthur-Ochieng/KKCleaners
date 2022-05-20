@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:cleaner/screens/login_page.dart';
-import 'package:cleaner/screens/welcome_page.dart';
+import 'package:cleaner/screens/authentication/login_page.dart';
+import 'package:cleaner/screens/authentication/welcome_page.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/constants.dart';
 import 'package:flutter/material.dart';

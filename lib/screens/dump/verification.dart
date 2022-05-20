@@ -1,4 +1,4 @@
-import 'package:cleaner/screens/registration.dart';
+import 'package:cleaner/screens/authentication/registration.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/bubble_layer.dart';
 import 'package:cleaner/widgets/constants.dart';

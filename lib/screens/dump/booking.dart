@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:cleaner/screens/fragments/confirmation.dart';
+import 'package:cleaner/screens/requests/offers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -153,7 +152,7 @@ class _BookingPageState extends State<BookingPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const ConfirmationPage()
+                          builder: (_) => const ConfirmTruce()
                         )
                       );
                     },

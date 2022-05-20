@@ -1,10 +1,6 @@
-import 'package:cleaner/screens/fragments/booking.dart';
-import 'package:cleaner/screens/fragments/bookings.dart';
-import 'package:cleaner/screens/fragments/jobs.dart';
-import 'package:cleaner/screens/fragments/offers.dart';
+import 'package:cleaner/screens/requests/offers.dart';
 import 'package:cleaner/screens/home_page.dart';
-import 'package:cleaner/screens/registration.dart';
-import 'package:cleaner/screens/verification.dart';
+import 'package:cleaner/screens/authentication/registration.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/bubble_layer.dart';
 import 'package:cleaner/widgets/constants.dart';

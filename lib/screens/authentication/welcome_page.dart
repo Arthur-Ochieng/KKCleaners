@@ -1,5 +1,5 @@
 import 'package:cleaner/screens/home_page.dart';
-import 'package:cleaner/screens/login_page.dart';
+import 'package:cleaner/screens/authentication/login_page.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/app_text_normal.dart';
 import 'package:cleaner/widgets/blinking_button.dart';

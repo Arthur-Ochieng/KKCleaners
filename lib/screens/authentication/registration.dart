@@ -1,5 +1,5 @@
 import 'package:cleaner/models/user_model.dart';
-import 'package:cleaner/screens/verify.dart';
+import 'package:cleaner/screens/authentication/verify.dart';
 import 'package:cleaner/widgets/app_text_bold.dart';
 import 'package:cleaner/widgets/bubble_layer.dart';
 import 'package:cleaner/widgets/constants.dart';
@@ -76,7 +76,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const AppTextBold(text: "Registration"),
-                  
+
                         //First Name
                         Container(
                           margin: const EdgeInsets.only(
@@ -120,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                  
+
                         //Second Name
                         Container(
                           margin: const EdgeInsets.only(
@@ -164,7 +164,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                  
+
                         //email
                         Container(
                           margin: const EdgeInsets.only(
@@ -176,7 +176,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             autofocus: false,
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
-                  
+
                             //validator
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -211,7 +211,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                  
+
                         //address
                         Container(
                           margin: const EdgeInsets.only(
@@ -227,7 +227,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             validator: (value) {
                               RegExp regex = RegExp(r'^.{2,}$');
                               if (value!.isEmpty) {
-                                return ("County cannot be empty");
+                                return ("Address cannot be empty");
                               }
                               if (!regex.hasMatch(value)) {
                                 return ("Enter Valid County(Min. 2 Characters)");
@@ -254,7 +254,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ),
                             ),
                           ),
-                        ),         
+                        ),
 
                         //Phone Number
                         Container(
@@ -272,6 +272,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               return null;
                             },
                             keyboardType: TextInputType.phone,
+                            textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                               disabledBorder: InputBorder.none,
                               border: const OutlineInputBorder(
@@ -289,7 +290,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                  
+
                         //Password field
                         Container(
                           margin: const EdgeInsets.only(
@@ -298,18 +299,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             color: bubbleColor,
                           ),
                           child: TextFormField(
-                            autofocus: false,
-                            controller: _passwordController,
                             obscureText: true,
-                  
+                            autofocus: false,
+                            keyboardType: TextInputType.name,
+                            controller: _passwordController,
+
                             //validator
                             validator: (value) {
-                              RegExp regex = RegExp(r'^.{6,}$');
+                              RegExp regex = RegExp(r'^.{2,}$');
                               if (value!.isEmpty) {
-                                return ("Password is required for Registration");
+                                return ("Password cannot be empty");
                               }
                               if (!regex.hasMatch(value)) {
-                                return ("Enter Valid Password(Min. 6 Characters)");
+                                return ("Enter Valid Password (Min. 6 Characters)");
                               }
                               return null;
                             },
@@ -318,46 +320,133 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             },
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
-                              prefixIcon: const Icon(Icons.vpn_key),
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                              disabledBorder: InputBorder.none,
+                              border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none),
+                              fillColor: bubbleColor,
+                              contentPadding: const EdgeInsets.only(
+                                left: 10,
+                              ),
                               hintText: "Password",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                              hintStyle: const TextStyle(color: Colors.black54),
+                              prefixIcon: const Icon(
+                                Icons.vpn_key,
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ),
-                  
-                        //confirmPassword field
-                        TextFormField(
-                          autofocus: false,
-                          controller: _confirmPassController,
-                          obscureText: true,
-                  
-                          //validator
-                          validator: (value) {
-                            if (_confirmPassController.text !=
-                                _passwordController.text) {
-                              return "Passwords do not match";
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _confirmPassController.text = value!;
-                          },
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.vpn_key),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                            hintText: "Confirm Password",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+
+                        //ConfirmPassword Field
+                        Container(
+                          margin: const EdgeInsets.only(
+                              top: 10, left: 20, right: 20),
+                          decoration: BoxDecoration(
+                            color: bubbleColor,
+                          ),
+                          child: TextFormField(
+                            autofocus: false,
+                            obscureText: true,
+                            controller: _confirmPassController,
+
+                            //validator
+                            validator: (value) {
+                              if (_confirmPassController.text !=
+                                  _passwordController.text) {
+                                return "Passwords do not match";
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _confirmPassController.text = value!;
+                            },
+                            textInputAction: TextInputAction.done,
+                            decoration: InputDecoration(
+                              disabledBorder: InputBorder.none,
+                              border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none),
+                              fillColor: bubbleColor,
+                              contentPadding: const EdgeInsets.only(
+                                left: 10,
+                              ),
+                              hintText: "Confirm Password",
+                              hintStyle: const TextStyle(color: Colors.black54),
+                              prefixIcon: const Icon(
+                                Icons.vpn_key,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
-                  
+
+                        //Password field
+                        // Container(
+                        //   margin: const EdgeInsets.only(
+                        //       top: 10, left: 20, right: 20),
+                        //   decoration: BoxDecoration(
+                        //     color: bubbleColor,
+                        //   ),
+                        //   child: TextFormField(
+                        //     autofocus: false,
+                        //     controller: _passwordController,
+                        //     obscureText: true,
+
+                        //     //validator
+                        //     validator: (value) {
+                        //       RegExp regex = RegExp(r'^.{6,}$');
+                        //       if (value!.isEmpty) {
+                        //         return ("Password is required for Registration");
+                        //       }
+                        //       if (!regex.hasMatch(value)) {
+                        //         return ("Enter Valid Password(Min. 6 Characters)");
+                        //       }
+                        //       return null;
+                        //     },
+                        //     onSaved: (value) {
+                        //       _passwordController.text = value!;
+                        //     },
+                        //     textInputAction: TextInputAction.next,
+                        //     decoration: InputDecoration(
+                        //       prefixIcon: const Icon(Icons.vpn_key),
+                        //       contentPadding:
+                        //           const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        //       hintText: "Password",
+                        //       border: OutlineInputBorder(
+                        //         borderRadius: BorderRadius.circular(10),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+
+                        // //confirmPassword field
+                        // TextFormField(
+                        //   autofocus: false,
+                        //   controller: _confirmPassController,
+                        //   obscureText: true,
+
+                        //   //validator
+                        //   validator: (value) {
+                        //     if (_confirmPassController.text !=
+                        //         _passwordController.text) {
+                        //       return "Passwords do not match";
+                        //     }
+                        //     return null;
+                        //   },
+                        //   onSaved: (value) {
+                        //     _confirmPassController.text = value!;
+                        //   },
+                        //   textInputAction: TextInputAction.done,
+                        //   decoration: InputDecoration(
+                        //     prefixIcon: const Icon(Icons.vpn_key),
+                        //     contentPadding:
+                        //         const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        //     hintText: "Confirm Password",
+                        //     border: OutlineInputBorder(
+                        //       borderRadius: BorderRadius.circular(10),
+                        //     ),
+                        //   ),
+                        // ),
+
                         //button
                         Padding(
                           padding: const EdgeInsets.only(
@@ -395,9 +484,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) => {
-            postDetailsToFirestore(),
-            currentUser?.updateDisplayName(_firstNameController.text),
-          })
+                postDetailsToFirestore(),
+                currentUser?.updateDisplayName(_firstNameController.text),
+              })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });
@@ -418,6 +507,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     userModel.type = "cleaner";
     userModel.email = user!.email;
     userModel.uid = user.uid;
+    userModel.ratings = "0";
     userModel.firstName = _firstNameController.text;
     userModel.secondName = _secondNameController.text;
     userModel.address = _addressController.text;

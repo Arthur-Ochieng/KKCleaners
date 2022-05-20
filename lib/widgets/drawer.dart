@@ -33,9 +33,9 @@ class _MyDrawerState extends State<MyDrawer> {
   List<String> menus = [
     "Orders",
     "History",
+    "Accepted",
+    "Declined",
     "Profile",
-    "Feedback",
-    "Wallet",
   ];
   final List <IconData> icons = [
     Icons.home_outlined,

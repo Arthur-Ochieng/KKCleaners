@@ -60,34 +60,6 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Expanded(
-                          child: ListTile(
-                            title: Text(
-                              "4",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xff525E7E),
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "Jobs Posted",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xff525E7E),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
                     const Padding(
                       padding: EdgeInsets.only(
                         top: 15,
@@ -101,7 +73,7 @@ class _ProfileState extends State<Profile> {
                     //Personal Info
                     const ListTile(
                       title: Text(
-                        "Arthur Ochieng",
+                        ".",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 18),
                       ),
@@ -110,8 +82,6 @@ class _ProfileState extends State<Profile> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-
-                    const Text("+ 254 712 815 240"),
                     const Padding(
                       padding: EdgeInsets.only(
                         left: 20,

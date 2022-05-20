@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MarkerPage extends StatefulWidget {
@@ -21,8 +20,7 @@ class _MarkerState extends State<MarkerPage> {
   void onMapCreated(GoogleMapController controller) {
     this.controller = controller;
   }
-
-// , 
+ 
   CameraPosition kGooglePlex = const CameraPosition(
     target: LatLng(-1.286389, 36.817223),
     zoom: 14.4746,
@@ -31,11 +29,12 @@ class _MarkerState extends State<MarkerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GoogleMap(
+      body: GoogleMap(
       mapType: MapType.normal,
       initialCameraPosition: kGooglePlex,
       onMapCreated: onMapCreated,
       markers: Set<Marker>.of(markers.values),
+      
       onTap: (LatLng pos) {
         const String markerIdVal = 'marker_id_1';
         _markerIdCounter++;

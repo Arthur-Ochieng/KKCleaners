@@ -6,9 +6,9 @@ class UserModel {
   String? address;
   String? type;
   String? phoneNumber;
+  String? ratings;
 
-  UserModel(
-  {
+  UserModel({
     this.uid,
     this.email,
     this.firstName,
@@ -16,6 +16,7 @@ class UserModel {
     this.phoneNumber,
     this.address,
     this.type,
+    this.ratings,
   });
 
   //data from the server
@@ -28,6 +29,7 @@ class UserModel {
       address: map('address'),
       type: map('type'),
       phoneNumber: map('phoneNumber'),
+      ratings: map('ratings'),
     );
   }
 
@@ -41,6 +43,7 @@ class UserModel {
       'address': address,
       'type': type,
       'phoneNumber': phoneNumber,
+      'ratings': ratings,
     };
   }
 }
